@@ -1,0 +1,1075 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light}img{max-width:100%}</style>
+<title>RoamLanka</title>
+<meta name="description" content="RoamLanka is a locally owned Sri Lankan tour agency for individuals, families and groups.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout concept: a tilted 3D island is the doorway. Below it, one calm column per section:
+   offer, five tours that alternate picture and text, what families can expect, and a deep-lagoon contact band. */
+:root{
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Figtree","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --bg:#f4f9f7; --bg-alt:#e7f2ee; --surface:#ffffff; --ink:#0f2e2c; --muted:#47635f; --line:#cde0da;
+  --lagoon:#0b7a78; --lagoon-ink:#075c5a; --on-lagoon:#ffffff;
+  --btn-bg:#c93b30; --btn-ink:#ffffff; --btn-hover:#ad2f26; --gold:#e3a02f;
+  --sea-a:#e3f5f2; --sea-b:#9fd7d0; --sea-c:#5fb8b0;
+  --land:#8ccf9b; --land-hi:#d9edba; --beach:#f6e9c6; --wall:#c9b17c; --wall-dark:#7b6844;
+  --band:#0b4a49; --band-ink:#eaf7f4; --band-muted:#a9cfc9;
+  --shadow:0 14px 34px rgba(15,46,44,.14); --radius:18px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#061817; --bg-alt:#0a2423; --surface:#0f2f2d; --ink:#e7f5f2; --muted:#9ec0ba; --line:#1c4643;
+    --lagoon:#58d6ca; --lagoon-ink:#7fe3d9; --on-lagoon:#04201f;
+    --btn-bg:#ff7d6d; --btn-ink:#2b0b07; --btn-hover:#ff9486; --gold:#f0b648;
+    --sea-a:#0a2b2a; --sea-b:#0d4442; --sea-c:#10605c;
+    --land:#3f9a6d; --land-hi:#9ccf8a; --beach:#cdb988; --wall:#7b6a45; --wall-dark:#352d1b;
+    --band:#04201f; --band-ink:#e7f5f2; --band-muted:#8fb8b2;
+    --shadow:0 14px 34px rgba(0,0,0,.45); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#061817; --bg-alt:#0a2423; --surface:#0f2f2d; --ink:#e7f5f2; --muted:#9ec0ba; --line:#1c4643;
+  --lagoon:#58d6ca; --lagoon-ink:#7fe3d9; --on-lagoon:#04201f;
+  --btn-bg:#ff7d6d; --btn-ink:#2b0b07; --btn-hover:#ff9486; --gold:#f0b648;
+  --sea-a:#0a2b2a; --sea-b:#0d4442; --sea-c:#10605c;
+  --land:#3f9a6d; --land-hi:#9ccf8a; --beach:#cdb988; --wall:#7b6a45; --wall-dark:#352d1b;
+  --band:#04201f; --band-ink:#e7f5f2; --band-muted:#8fb8b2;
+  --shadow:0 14px 34px rgba(0,0,0,.45); color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.12;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+ul,ol{margin:0;padding:0}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.ic{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.eyebrow{font:700 .8rem var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--lagoon-ink)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border-radius:999px;font:700 1rem var(--f-body);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .25s ease,background .25s ease,box-shadow .25s ease,color .25s ease}
+.btn.primary{background:var(--btn-bg);color:var(--btn-ink);box-shadow:0 8px 20px color-mix(in srgb,var(--btn-bg) 30%,transparent)}
+.btn.primary:hover{background:var(--btn-hover);transform:translateY(-2px)}
+.btn.ghost{border-color:var(--lagoon);color:var(--lagoon-ink);background:transparent}
+.btn.ghost:hover{background:var(--lagoon);color:var(--on-lagoon);transform:translateY(-2px)}
+.btn.sm{padding:9px 18px;font-size:.92rem}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;min-height:68px}
+.brand{display:flex;align-items:center;gap:10px;font:700 1.4rem var(--f-display);text-decoration:none;letter-spacing:-.02em}
+.brand svg{width:36px;height:36px}
+.nav{display:flex;gap:4px;margin-left:auto;align-items:center}
+.nav a:not(.btn){padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.95rem;color:var(--muted);transition:background .25s,color .25s}
+.nav a:not(.btn):hover,.nav a.on{background:var(--bg-alt);color:var(--ink)}
+.nav .btn{margin-left:8px}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;place-items:center}
+@media (max-width:860px){
+  .menu-btn{display:inline-grid}
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:2px;background:var(--bg);padding:10px max(16px,env(safe-area-inset-right,0px)) 18px max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+  .nav[data-open]{display:flex}
+  .nav a:not(.btn){padding:12px 14px}
+  .nav .btn{margin:8px 0 0}
+}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:radial-gradient(900px 520px at 76% 34%,color-mix(in srgb,var(--sea-c) 55%,transparent),transparent 70%),linear-gradient(180deg,var(--sea-a),var(--sea-b))}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:20px;padding-block:36px 84px}
+.hero-copy{display:grid;gap:18px;justify-items:start}
+.hero h1{font-size:clamp(2.3rem,5.2vw,4.1rem);font-weight:700}
+.lede{font-size:1.15rem;color:var(--muted);max-width:34em}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.quick{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin-top:8px}
+.quick a{display:inline-flex;align-items:center;gap:8px;padding:8px 14px 8px 10px;border-radius:999px;background:color-mix(in srgb,var(--surface) 88%,transparent);border:1px solid var(--line);text-decoration:none;font-weight:600;font-size:.9rem;transition:transform .25s,background .25s,box-shadow .25s}
+.quick a:hover{transform:translateY(-2px);background:var(--surface);box-shadow:0 8px 18px rgba(0,0,0,.12)}
+.quick .dot{width:26px;height:26px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center}
+.quick .dot .ic{width:15px;height:15px}
+.wave{position:absolute;left:0;right:0;bottom:-1px;height:64px;width:100%;display:block}
+.wave path{fill:var(--bg)}
+
+.stage{--mapw:clamp(270px,76vw,420px);height:calc(var(--mapw)*1.2);display:grid;place-items:center;perspective:1600px;perspective-origin:50% 38%;position:relative}
+@media (min-width:961px){.stage{--mapw:clamp(340px,29vw,420px)}}
+.stage{margin-bottom:40px}
+.map{--rx:52deg;--rz:-16deg;width:var(--mapw);aspect-ratio:320/510;position:relative;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateZ(var(--rz))}
+.layer{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.sea-t{font:600 14px var(--f-body);letter-spacing:.55em;fill:#fff;opacity:.55}
+.stage-col{display:grid;justify-items:center;gap:8px;min-width:0}
+.stage-col .hint{order:-1}
+@media (min-width:961px){.stage-col{padding-right:clamp(36px,6vw,80px)}}
+.hint{font-size:.85rem;font-weight:600;color:var(--muted);background:color-mix(in srgb,var(--surface) 85%,transparent);padding:5px 14px;border-radius:999px;text-align:center}
+
+.pin{position:absolute;left:var(--x);top:var(--y);width:2px;height:2px;transform-style:preserve-3d;transform:translateZ(var(--z,2px));text-decoration:none;color:var(--ink)}
+.pin::before{content:"";position:absolute;left:-10px;top:-10px;width:20px;height:20px;border-radius:50%;background:var(--c);opacity:.45}
+.pin::after{content:"";position:absolute;left:-10px;top:-10px;width:20px;height:20px;border-radius:50%;border:2px solid var(--c);animation:ring 2.6s ease-out infinite}
+@keyframes ring{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.8);opacity:0}}
+.pin-face{position:absolute;left:0;top:0;width:2px;height:2px;transform-style:preserve-3d;transform-origin:0 0;transform:rotateZ(calc(var(--rz,-16deg)*-1)) rotateX(calc(var(--rx,52deg)*-1)) scale(var(--ps,1))}
+.pin-stem{position:absolute;left:-1px;bottom:0;width:2px;height:26px;background:var(--c)}
+.pin-body{position:absolute;left:-23px;bottom:24px;width:46px;height:46px;border-radius:50%;background:var(--c);border:3px solid #fff;color:#fff;display:grid;place-items:center;box-shadow:0 6px 14px rgba(0,0,0,.3);transform-origin:50% 100%;transition:transform .25s ease}
+.pin-body .ic{width:22px;height:22px}
+.pin-label{position:absolute;left:32px;bottom:32px;white-space:nowrap;background:var(--surface);color:var(--ink);padding:6px 12px;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.2);line-height:1.25;display:grid;transition:background .25s,color .25s}
+.pin-label b{font:700 .95rem var(--f-display)}
+.pin-label i{font-style:normal;font-size:.78rem;color:var(--muted)}
+.pin.l .pin-label{left:auto;right:32px}
+.pin:hover .pin-body,.pin:focus-visible .pin-body{transform:scale(1.14)}
+.pin:hover .pin-label,.pin:focus-visible .pin-label{background:var(--c);color:#fff}
+.pin:hover .pin-label i,.pin:focus-visible .pin-label i{color:inherit}
+.pin:focus-visible{outline:none}
+.pin:focus-visible .pin-body{outline:3px solid var(--gold);outline-offset:3px}
+.pin.car .pin-stem{display:none}
+.pin.car .pin-body{left:-50px;bottom:4px;width:100px;height:46px;border:0;border-radius:0;background:none;box-shadow:none;filter:drop-shadow(0 8px 6px rgba(0,0,0,.3))}
+.pin.car .pin-body svg{width:100px;height:46px}
+.pin.car .pin-label{left:0;right:auto;transform:translateX(-50%);bottom:58px}
+@media (max-width:760px){.pin-label{display:none}.stage{--ps:.8}}
+@media (max-width:960px){.hero-grid{grid-template-columns:minmax(0,1fr);padding-block:12px 76px;gap:6px}.stage-col{order:-1}.stage{--mapw:clamp(250px,68vw,380px)}}
+
+/* sections */
+section{padding-block:clamp(56px,8vw,104px)}
+.hero{padding-block:0}
+.sec-head{max-width:760px;margin-bottom:40px;display:grid;gap:14px}
+.sec-head h2{font-size:clamp(1.95rem,3.8vw,3rem);font-weight:700}
+.sec-head p{color:var(--muted)}
+.reveal{opacity:.78;transform:translateY(22px);transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* offer */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px 36px;margin-bottom:64px}
+.feat{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start}
+.feat .ico{grid-row:span 2;width:46px;height:46px;border-radius:14px;background:var(--bg-alt);color:var(--lagoon-ink);display:grid;place-items:center}
+.feat h3{font-size:1.15rem;align-self:end}
+.feat p{color:var(--muted);font-size:.98rem}
+.tiles-head{font-size:1.3rem;margin-bottom:16px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;list-style:none}
+.tile{display:flex;flex-direction:column;gap:8px;height:100%;padding:20px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);text-decoration:none;transition:transform .3s ease,box-shadow .3s ease,border-color .3s}
+.tile:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--c)}
+.tile .ico{width:42px;height:42px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center}
+.tile h4{font-size:1.08rem}
+.tile p{color:var(--muted);font-size:.92rem;line-height:1.5}
+.tile .go{margin-top:auto;display:inline-flex;gap:6px;align-items:center;font-weight:700;font-size:.9rem;color:var(--lagoon-ink)}
+.tile:hover .go .ic{transform:translateX(4px)}
+.tile .go .ic{transition:transform .25s}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;margin-top:64px;list-style:none;counter-reset:s}
+.steps li{display:grid;gap:6px;counter-increment:s}
+.steps li::before{content:counter(s);font:700 2.6rem/1 var(--f-display);color:var(--lagoon)}
+.steps h4{font-size:1.15rem}
+.steps p{color:var(--muted);font-size:.98rem}
+
+/* tours */
+.tours{background:var(--bg-alt)}
+.pkg{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:clamp(24px,5vw,60px);align-items:center;margin-bottom:clamp(56px,9vw,104px)}
+.pkg:last-child{margin-bottom:0}
+.pkg:nth-of-type(even) .scene{order:2}
+@media (max-width:900px){.pkg{grid-template-columns:minmax(0,1fr)}.pkg:nth-of-type(even) .scene{order:0}}
+.scene{margin:0;position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);background:var(--sea-a)}
+.scene img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.scene:hover img{transform:scale(1.035)}
+.scene figcaption{position:absolute;left:16px;bottom:16px;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:6px 14px;border-radius:999px;font-weight:700;font-size:.85rem}
+.pkg-body{display:grid;gap:16px;min-width:0}
+.kicker{font:700 .8rem var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 68%,var(--ink))}
+.pkg h3{font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:700}
+.pkg-lede{color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;list-style:none}
+.meta li{padding:7px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:.9rem}
+.meta b{font-weight:700;margin-right:4px}
+.pkg h4{font-size:1.02rem;margin-top:4px}
+.checks{list-style:none;display:grid;gap:8px}
+.checks li{position:relative;padding-left:30px;font-size:.98rem}
+.checks li::before{content:"";position:absolute;left:0;top:.3em;width:20px;height:20px;border-radius:50%;background:var(--c) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat}
+.route{list-style:none;display:grid;gap:8px;padding:16px 18px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.route li{display:grid;grid-template-columns:58px minmax(0,1fr);gap:10px;font-size:.95rem;line-height:1.5}
+.route b{font:700 .78rem var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 68%,var(--ink));padding-top:2px}
+.note{font-size:.88rem;color:var(--muted)}
+.pkg-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none}
+.chips li{padding:7px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:.92rem;font-weight:600}
+
+/* why travel with us */
+.promises{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;list-style:none;margin-bottom:34px}
+.promises li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;padding:22px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);transition:transform .3s ease,box-shadow .3s ease}
+.promises li:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.promises .ico{grid-row:span 2;width:44px;height:44px;border-radius:14px;background:var(--bg-alt);color:var(--lagoon-ink);display:grid;place-items:center}
+.promises h3{font-size:1.12rem;align-self:end}
+.promises p{color:var(--muted);font-size:.97rem;grid-column:2}
+.invite{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;padding:24px 28px;border-radius:var(--radius);background:var(--bg-alt);border:1px solid var(--line)}
+.invite h3{font-size:1.25rem;margin-bottom:4px}
+.invite p{color:var(--muted);max-width:44em}
+.rvlist{display:grid;gap:16px;margin-bottom:34px}
+.rvlist h3{font-size:1.4rem}
+.rvgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.rvc{margin:0;padding:22px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);display:grid;gap:8px;align-content:start}
+.rvc .stars{color:var(--gold);letter-spacing:.12em;font-size:1.05rem}
+.rvc h4{font:700 1.12rem var(--f-display)}
+.rvc p{color:var(--muted);font-size:.98rem}
+.rvc figcaption{margin-top:4px;font-weight:700;font-size:.85rem;color:var(--lagoon-ink)}
+.sharebox{margin-top:16px;padding:clamp(18px,3vw,30px);border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);display:grid;gap:14px}
+.sharebox h3{font-size:1.35rem}
+.sharebox .pills .pill span{min-width:44px;text-align:center}
+.checkrow{display:flex;gap:10px;align-items:flex-start;font-size:.95rem;font-weight:500}
+.checkrow input{width:20px;height:20px;margin-top:3px;flex:none;accent-color:var(--lagoon)}
+.sharebox .result{margin-top:4px}
+.wa-float{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:45;display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;background:#1f9d55;color:#fff;font:700 .95rem var(--f-body);text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,.28);transition:transform .25s}
+.wa-float:hover{transform:translateY(-2px)}
+@media (max-width:520px){.wa-float span{display:none}.wa-float{padding:14px}}
+
+/* contact */
+.contact{background:var(--band);color:var(--band-ink)}
+.contact .eyebrow{color:var(--band-muted)}
+.contact .sec-head p{color:var(--band-muted)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,56px);align-items:start}
+@media (max-width:940px){.contact-grid{grid-template-columns:minmax(0,1fr)}}
+.ci{display:grid;gap:12px;margin-bottom:34px}
+.ci-row{padding:14px 18px;border-radius:16px;background:color-mix(in srgb,var(--band-ink) 8%,transparent);border:1px solid color-mix(in srgb,var(--band-ink) 14%,transparent)}
+.ci-row .lab{display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--band-muted)}
+.ci-row .line{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
+.ci-row .val{font:700 1.2rem var(--f-display);overflow-wrap:anywhere;text-decoration:none}
+.copy{border:1.5px solid color-mix(in srgb,var(--band-ink) 35%,transparent);background:transparent;color:var(--band-ink);border-radius:999px;padding:5px 14px;font:600 .82rem var(--f-body);cursor:pointer;transition:background .25s}
+.copy:hover{background:color-mix(in srgb,var(--band-ink) 14%,transparent)}
+.faq h3{font-size:1.25rem;margin-bottom:10px}
+.faq details{border-top:1px solid color-mix(in srgb,var(--band-ink) 16%,transparent)}
+.faq details:last-child{border-bottom:1px solid color-mix(in srgb,var(--band-ink) 16%,transparent)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 0;font-weight:700}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ic{transition:transform .3s}
+.faq details[open] summary .ic{transform:rotate(180deg)}
+.faq details p{padding:0 0 16px;color:var(--band-muted);font-size:.98rem}
+
+.book{background:var(--surface);color:var(--ink);border-radius:28px;padding:clamp(20px,3.4vw,36px);box-shadow:0 24px 50px rgba(0,0,0,.28);transition:box-shadow .5s,outline-color .5s;outline:3px solid transparent}
+.book.flash{outline-color:var(--gold)}
+.book h3{font-size:1.6rem;margin-bottom:4px}
+.book .sub{color:var(--muted);margin-bottom:20px;font-size:.98rem}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.full{grid-column:1/-1}
+@media (max-width:520px){.fields{grid-template-columns:minmax(0,1fr)}}
+.f{display:grid;gap:6px;font-weight:600;font-size:.92rem;min-width:0}
+.f small{font-weight:500;color:var(--muted)}
+input,select,textarea{font:inherit;font-weight:400;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);width:100%;min-width:0}
+textarea{resize:vertical;min-height:96px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--lagoon);box-shadow:0 0 0 4px color-mix(in srgb,var(--lagoon) 22%,transparent)}
+fieldset{border:0;padding:0;margin:0;min-width:0}
+legend{font-weight:600;font-size:.92rem;padding:0;margin-bottom:8px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{position:relative;display:inline-block}
+.pill input{position:absolute;opacity:0;width:1px;height:1px}
+.pill span{display:inline-block;padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);cursor:pointer;font-weight:600;font-size:.9rem;transition:background .2s,color .2s,border-color .2s}
+.pill:hover span{border-color:var(--lagoon)}
+.pill input:checked+span{background:var(--lagoon);color:var(--on-lagoon);border-color:var(--lagoon)}
+.pill input:focus-visible+span{outline:3px solid var(--gold);outline-offset:2px}
+.err{color:#b3261e;font-weight:600;font-size:.92rem;min-height:1.3em}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .err{color:#ff9a90}}
+:root[data-theme="dark"] .err{color:#ff9a90}
+.submit-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.result{margin-top:22px;padding:18px;border-radius:18px;background:var(--bg-alt);border:1px solid var(--line);display:grid;gap:12px}
+.result h4{font-size:1.1rem}
+.result textarea{min-height:190px;font-size:.92rem;line-height:1.5}
+.result .acts{display:flex;flex-wrap:wrap;gap:10px}
+.result .btn.copy-b{border-color:var(--lagoon);color:var(--lagoon-ink);background:transparent}
+
+footer{background:color-mix(in srgb,var(--band) 72%,#000);color:var(--band-muted);padding-block:34px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 28px;align-items:center;font-size:.92rem}
+footer .brand{color:var(--band-ink);font-size:1.15rem}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--band-ink)}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<!-- shared artwork -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="logo" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#0b7a78"/><path d="M6 24c3.5-4 7-4 10.5 0s7 4 10.5 0 5-3 7-1.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M8 31c3.5-3.4 7-3.4 10.5 0s7 3.4 10.5 0" fill="none" stroke="#9fe3dc" stroke-width="2.2" stroke-linecap="round"/><circle cx="26" cy="12" r="4.6" fill="#ff7a59"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 10c2.5-3 4.5-3 7 0s4.5 3 7 0 4.5-3 6 0M2 16c2.5-3 4.5-3 7 0s4.5 3 7 0 4.5-3 6 0"/></symbol>
+    <symbol id="i-mount" viewBox="0 0 24 24"><path d="M3 19 9 8l4 6 2.5-3.5L21 19Z"/><path d="M7.4 11.6 9 13l1.5-1"/></symbol>
+    <symbol id="i-stupa" viewBox="0 0 24 24"><path d="M6 17a6 6 0 0 1 12 0Z"/><path d="M12 11V4M10.5 6h3M4 20.5h16"/></symbol>
+    <symbol id="i-paw" viewBox="0 0 24 24"><path d="M12 12.5c-3 0-5 2.4-5 4.5 0 1.5 1.4 2.5 3 2l2-.5 2 .5c1.6.5 3-.5 3-2 0-2.1-2-4.5-5-4.5Z" fill="currentColor" stroke="none"/><circle cx="5.8" cy="10" r="1.8" fill="currentColor" stroke="none"/><circle cx="9.8" cy="6.4" r="1.8" fill="currentColor" stroke="none"/><circle cx="14.2" cy="6.4" r="1.8" fill="currentColor" stroke="none"/><circle cx="18.2" cy="10" r="1.8" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16l1.4-5A2 2 0 0 1 7.3 9.5h9.4a2 2 0 0 1 1.9 1.5L20 16v3H4Z"/><path d="M7 19v1.5M17 19v1.5M4 13.5h16"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.6 2.7-6 6-6s6 2.4 6 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.2c2.4.2 4.2 2 4.2 4.8"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20Z"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18V6M3 13h18v5M21 13v-2.5a3 3 0 0 0-3-3h-6V13"/><circle cx="7.5" cy="10" r="1.8"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.3a10 10 0 0 0 5.2 5.2l1.3-2 4 1.5v3A2.5 2.5 0 0 1 17 19.5C9.8 19.5 4.5 14.2 4.5 7A2.5 2.5 0 0 1 6.5 3.5Z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H11l-4.5 4v-4A2.5 2.5 0 0 1 4 13.5Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="car-sym" viewBox="0 0 260 120">
+      <ellipse cx="130" cy="114" rx="116" ry="6" fill="#000" opacity=".18"/>
+      <path d="M14 82C14 66 26 60 44 58L74 38C82 32 92 29 104 29H156C170 29 182 34 192 44L208 58C230 60 246 68 246 84V94H14Z" fill="#e1342b"/>
+      <path d="M82 44 100 36H152C162 36 170 40 178 48L188 58H72Z" fill="#cfe9f5"/>
+      <path d="M126 36V58" stroke="#e1342b" stroke-width="5"/>
+      <rect x="18" y="86" width="228" height="10" rx="5" fill="#b8261f"/>
+      <rect x="236" y="70" width="12" height="9" rx="3" fill="#ffe07a"/>
+      <rect x="12" y="72" width="8" height="9" rx="3" fill="#ff9b8f"/>
+      <path d="M40 62C80 54 120 54 170 54" stroke="#fff" stroke-opacity=".35" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="70" cy="96" r="19" fill="#1d2326"/><circle cx="70" cy="96" r="9" fill="#cfd8dc"/>
+      <circle cx="196" cy="96" r="19" fill="#1d2326"/><circle cx="196" cy="96" r="9" fill="#cfd8dc"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="RoamLanka home"><svg aria-hidden="true"><use href="#logo"/></svg>RoamLanka</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#home">Home</a>
+      <a href="#offer">What we offer</a>
+      <a href="#tours">Tours</a>
+      <a href="#promise">Why us</a>
+      <a href="#contact">Contact</a>
+      <a class="btn primary sm" href="#book" data-book="">Book now</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- 1 · HOME -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Locally owned &middot; Negombo, Sri Lanka</p>
+      <h1>Discover Sri Lanka with people who call it home</h1>
+      <p class="lede">RoamLanka is a tour agency for individuals, families and groups. Press a pin on the island to see that tour, or press the red car to build your own.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#book" data-book="">Book a tour</a>
+        <a class="btn ghost" href="#offer">What we offer</a>
+      </div>
+      <ul class="quick" aria-label="Jump to a tour">
+        <li><a href="#hikkaduwa" style="--c:#0e9fb0"><span class="dot"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg></span>Waves</a></li>
+        <li><a href="#ella" style="--c:#2e9b62"><span class="dot"><svg class="ic" aria-hidden="true"><use href="#i-mount"/></svg></span>Hill country</a></li>
+        <li><a href="#sigiriya" style="--c:#b9701a"><span class="dot"><svg class="ic" aria-hidden="true"><use href="#i-stupa"/></svg></span>Culture</a></li>
+        <li><a href="#yala" style="--c:#8a5a38"><span class="dot"><svg class="ic" aria-hidden="true"><use href="#i-paw"/></svg></span>Wildlife</a></li>
+        <li><a href="#custom" style="--c:#d33a2f"><span class="dot"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg></span>Your own tour</a></li>
+      </ul>
+    </div>
+
+    <div class="stage-col"><div class="stage" id="stage">
+      <div class="map" id="map">
+        <a class="pin l" href="#hikkaduwa" style="--x:28.2%;--y:89.7%;--z:2px;--c:#0e9fb0" aria-label="Hikkaduwa: relaxation on the waves">
+          <span class="pin-face"><span class="pin-stem"></span><span class="pin-body"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg></span><span class="pin-label"><b>Hikkaduwa</b><i>Relax on the waves</i></span></span>
+        </a>
+        <a class="pin" href="#ella" style="--x:62.2%;--y:73.7%;--z:9px;--c:#2e9b62" aria-label="Ella: hill country, waterfalls and hikes">
+          <span class="pin-face"><span class="pin-stem"></span><span class="pin-body"><svg class="ic" aria-hidden="true"><use href="#i-mount"/></svg></span><span class="pin-label"><b>Ella</b><i>Waterfalls and hikes</i></span></span>
+        </a>
+        <a class="pin" href="#sigiriya" style="--x:51.1%;--y:47.6%;--z:2px;--c:#b9701a" aria-label="Sigiriya: culture and history">
+          <span class="pin-face"><span class="pin-stem"></span><span class="pin-body"><svg class="ic" aria-hidden="true"><use href="#i-stupa"/></svg></span><span class="pin-label"><b>Sigiriya</b><i>Culture and history</i></span></span>
+        </a>
+        <a class="pin l" href="#yala" style="--x:72.9%;--y:86.6%;--z:2px;--c:#8a5a38" aria-label="Yala: Sri Lankan wildlife">
+          <span class="pin-face"><span class="pin-stem"></span><span class="pin-body"><svg class="ic" aria-hidden="true"><use href="#i-paw"/></svg></span><span class="pin-label"><b>Yala</b><i>Wildlife safari</i></span></span>
+        </a>
+        <a class="pin car" href="#custom" style="--x:21%;--y:65.3%;--z:2px;--c:#e1342b" aria-label="Negombo: design your own tour">
+          <span class="pin-face"><span class="pin-stem"></span><span class="pin-body"><svg aria-hidden="true" viewBox="0 0 260 120"><use href="#car-sym"/></svg></span><span class="pin-label"><b>Negombo</b><i>Design your own tour</i></span></span>
+        </a>
+      </div>
+    </div>
+      <p class="hint">Press a pin to jump to that tour</p>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 44C220 84 470 6 720 34S1210 74 1440 22V80H0Z"/></svg>
+</section>
+
+<!-- 2 · WHAT WE OFFER -->
+<section id="offer">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">What we offer</p>
+      <h2>One local team for the whole holiday</h2>
+      <p>RoamLanka is a locally owned Sri Lankan tour agency. We plan holidays around the people travelling, from solo travellers and couples to families and larger groups. Choose one of our ready-made tours or ask us to build the whole trip around your needs. Every tour is family friendly and can be changed to suit you.</p>
+    </div>
+
+    <div class="features reveal">
+      <div class="feat"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span><h3>Locally owned</h3><p>A Sri Lankan team that knows the roads, the seasons and the places worth the detour.</p></div>
+      <div class="feat"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span><h3>Individuals to groups</h3><p>Solo trips, couples, families, friends and multi-generational groups are all welcome.</p></div>
+      <div class="feat"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg></span><h3>Family friendly</h3><p>Slower days, stops for the kids and a pace that you set.</p></div>
+      <div class="feat"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg></span><h3>Fully customizable</h3><p>Start from a package and change it, or start from a blank page.</p></div>
+      <div class="feat"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg></span><h3>Transport that fits</h3><p>The vehicle changes with the number of guests and the route, from a car to a larger van.</p></div>
+      <div class="feat"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg></span><h3>Stay where you like</h3><p>Choose your own accommodation, or let us include it in your package.</p></div>
+    </div>
+
+    <h3 class="tiles-head reveal">Our tours</h3>
+    <ul class="tiles reveal">
+      <li><a class="tile" href="#hikkaduwa" style="--c:#0e9fb0"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg></span><h4>Relaxation on the waves</h4><p>Reefs, surf and golden sunsets on the south coast.</p><span class="go">See the tour <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a class="tile" href="#ella" style="--c:#2e9b62"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-mount"/></svg></span><h4>Scenic routes and waterfalls</h4><p>Train rides, tea country and hill trails.</p><span class="go">See the tour <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a class="tile" href="#sigiriya" style="--c:#b9701a"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-stupa"/></svg></span><h4>Cultural wonders</h4><p>Rock fortresses, sacred cities and cave temples.</p><span class="go">See the tour <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a class="tile" href="#yala" style="--c:#8a5a38"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-paw"/></svg></span><h4>One with the wild</h4><p>Dawn safaris for leopards and elephants.</p><span class="go">See the tour <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a class="tile" href="#custom" style="--c:#d33a2f"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg></span><h4>The local experience</h4><p>Village life, food and a route that is yours.</p><span class="go">Plan your own <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+    </ul>
+
+    <ol class="steps reveal" aria-label="How booking works">
+      <li><h4>Choose or describe</h4><p>Pick a tour, or tell us what you want to see and who is travelling.</p></li>
+      <li><h4>We shape the plan</h4><p>You get a route with transport and stay options that fit your group and dates.</p></li>
+      <li><h4>Travel at your pace</h4><p>The plan stays flexible, so days can change as the trip goes.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 3 · TOURS -->
+<section class="tours" id="tours">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Our tours</p>
+      <h2>Five ways to see Sri Lanka</h2>
+      <p>Every tour is a starting point. Change the length, swap a stop or mix two tours together, and tell us how you want to get around and where you want to sleep.</p>
+    </div>
+
+    <!-- Hikkaduwa -->
+    <article class="pkg reveal" id="hikkaduwa" style="--c:#0e9fb0">
+      <figure class="scene">
+        <img src="img/beach.png" alt="Aerial view of a golden Sri Lankan beach with turquoise water, a rocky breakwater and palm trees" width="640" height="480" loading="lazy" decoding="async">
+        <figcaption>Hikkaduwa &middot; Mirissa &middot; Galle</figcaption>
+      </figure>
+      <div class="pkg-body">
+        <p class="kicker">South coast</p>
+        <h3>Relaxation on the Waves</h3>
+        <p class="pkg-lede">Slow days beside the Indian Ocean. Snorkel the reef at Hikkaduwa, take a surf lesson at Weligama, walk the ramparts of Galle Fort and watch for whales off Mirissa.</p>
+        <ul class="meta"><li><b>Suggested</b>4 days</li><li><b>Best months</b>Nov to Apr</li><li><b>Good for</b>Couples, families, first-time surfers</li></ul>
+        <h4>Highlights</h4>
+        <ul class="checks">
+          <li>Snorkelling and glass-bottom boat rides over the Hikkaduwa coral</li>
+          <li>Turtle hatchery visit along the coast road</li>
+          <li>Beginner surf lessons at Weligama and Mirissa</li>
+          <li>Sunset at Galle Fort and on Unawatuna beach</li>
+          <li>Whale and dolphin watching from Mirissa in season</li>
+          <li>Coconut Tree Hill at Mirissa for the evening light</li>
+        </ul>
+        <h4>Sample route</h4>
+        <ol class="route">
+          <li><b>Day 1</b><span>Negombo to Hikkaduwa, then a free beach afternoon</span></li>
+          <li><b>Day 2</b><span>Reef snorkelling, then Galle Fort and Unawatuna</span></li>
+          <li><b>Day 3</b><span>Surf lesson at Weligama, sunset at Mirissa</span></li>
+          <li><b>Day 4</b><span>Morning whale watching, then the drive back</span></li>
+        </ol>
+        <p class="note">Whale watching depends on the season, so we plan around it.</p>
+        <div class="pkg-actions"><a class="btn primary" href="#book" data-book="waves">Book this tour</a><a class="btn ghost" href="#contact">Contact now</a></div>
+      </div>
+    </article>
+
+    <!-- Ella -->
+    <article class="pkg reveal" id="ella" style="--c:#2e9b62">
+      <figure class="scene">
+        <img src="img/scenic.png" alt="The Nine Arch Bridge near Ella crossing green tea-covered hills" width="640" height="480" loading="lazy" decoding="async">
+        <figcaption>Ella &middot; Nuwara Eliya &middot; Kandy</figcaption>
+      </figure>
+      <div class="pkg-body">
+        <p class="kicker">Hill country</p>
+        <h3>Scenic Routes, Waterfalls and Hikes</h3>
+        <p class="pkg-lede">Cool air, green valleys and long views. Ride through tea country, hike to viewpoints around Ella and stand beside some of the island's tallest waterfalls.</p>
+        <ul class="meta"><li><b>Suggested</b>5 days</li><li><b>Best months</b>Jan to Apr</li><li><b>Good for</b>Hikers, photographers, active families</li></ul>
+        <h4>Highlights</h4>
+        <ul class="checks">
+          <li>Nine Arch Bridge near Demodara, with the trains passing</li>
+          <li>Little Adam's Peak, an easy walk with wide views</li>
+          <li>Ravana Falls and Diyaluma Falls</li>
+          <li>Horton Plains and World's End at first light</li>
+          <li>Tea estate and factory visit around Nuwara Eliya</li>
+          <li>Kandy lake and the Temple of the Tooth</li>
+        </ul>
+        <h4>Sample route</h4>
+        <ol class="route">
+          <li><b>Day 1</b><span>Negombo to Kandy, lake walk and the Temple of the Tooth</span></li>
+          <li><b>Day 2</b><span>Kandy to Nuwara Eliya through the tea country</span></li>
+          <li><b>Day 3</b><span>Early Horton Plains and World's End, then on to Ella</span></li>
+          <li><b>Day 4</b><span>Little Adam's Peak, Nine Arch Bridge, Ravana Falls</span></li>
+          <li><b>Day 5</b><span>Diyaluma Falls, then the drive back</span></li>
+        </ol>
+        <p class="note">Waterfalls run fullest after rain, so we adjust the order to the weather.</p>
+        <div class="pkg-actions"><a class="btn primary" href="#book" data-book="hills">Book this tour</a><a class="btn ghost" href="#contact">Contact now</a></div>
+      </div>
+    </article>
+
+    <!-- Sigiriya -->
+    <article class="pkg reveal" id="sigiriya" style="--c:#b9701a">
+      <figure class="scene">
+        <img src="img/culture.png" alt="Sigiriya Rock Fortress rising above green forest, seen from the garden steps" width="640" height="480" loading="lazy" decoding="async">
+        <figcaption>Sigiriya &middot; Anuradhapura &middot; Polonnaruwa</figcaption>
+      </figure>
+      <div class="pkg-body">
+        <p class="kicker">Cultural Triangle</p>
+        <h3>Cultural Wonders and Ancient Cities</h3>
+        <p class="pkg-lede">Walk through more than 2,000 years of history. Climb the rock fortress at Sigiriya, explore the sacred city of Anuradhapura and the ruins of Polonnaruwa, and visit the cave temples at Dambulla.</p>
+        <ul class="meta"><li><b>Suggested</b>4 to 5 days</li><li><b>Best months</b>Feb to Sep</li><li><b>Good for</b>History lovers, families, photographers</li></ul>
+        <h4>Highlights</h4>
+        <ul class="checks">
+          <li>Sigiriya Rock Fortress, a UNESCO World Heritage Site</li>
+          <li>Pidurangala Rock for the view back across to Sigiriya</li>
+          <li>Dambulla Cave Temple and its painted ceilings</li>
+          <li>Sri Maha Bodhi and Ruwanwelisaya in Anuradhapura</li>
+          <li>Polonnaruwa ruins, easy to explore by bicycle</li>
+          <li>Temple of the Tooth in Kandy</li>
+        </ul>
+        <h4>Sample route</h4>
+        <ol class="route">
+          <li><b>Day 1</b><span>Negombo to Anuradhapura, sacred city at sunset</span></li>
+          <li><b>Day 2</b><span>Mihintale, then the cave temples at Dambulla</span></li>
+          <li><b>Day 3</b><span>Pidurangala at sunrise, then Sigiriya Rock</span></li>
+          <li><b>Day 4</b><span>Polonnaruwa ancient city</span></li>
+          <li><b>Day 5</b><span>Kandy and the Temple of the Tooth</span></li>
+        </ol>
+        <p class="note">Visit a temple in the right clothes? We tell you what to wear before each stop.</p>
+        <div class="pkg-actions"><a class="btn primary" href="#book" data-book="culture">Book this tour</a><a class="btn ghost" href="#contact">Contact now</a></div>
+      </div>
+    </article>
+
+    <!-- Yala -->
+    <article class="pkg reveal" id="yala" style="--c:#8a5a38">
+      <figure class="scene">
+        <img src="img/wildlife.png" alt="A Sri Lankan leopard resting on a fallen tree branch in the grass" width="640" height="480" loading="lazy" decoding="async">
+        <figcaption>Yala &middot; Udawalawe &middot; Bundala</figcaption>
+      </figure>
+      <div class="pkg-body">
+        <p class="kicker">Wildlife</p>
+        <h3>One with the Wild</h3>
+        <p class="pkg-lede">Dawn jeep safaris in the national parks, where leopards, elephants, sloth bears and hundreds of bird species live. Yala has one of the highest leopard densities in the world.</p>
+        <ul class="meta"><li><b>Suggested</b>3 to 4 days</li><li><b>Best months</b>Feb to Jul</li><li><b>Good for</b>Families, photographers, nature lovers</li></ul>
+        <h4>Highlights</h4>
+        <ul class="checks">
+          <li>Early morning jeep safari in Yala National Park</li>
+          <li>Elephant herds at Udawalawe</li>
+          <li>Elephant Transit Home at feeding time</li>
+          <li>Birdwatching at the Bundala wetlands</li>
+          <li>Wild peafowl, crocodiles and water buffalo along the tracks</li>
+          <li>Optional whale watching at Mirissa in season</li>
+        </ul>
+        <h4>Sample route</h4>
+        <ol class="route">
+          <li><b>Day 1</b><span>Negombo to Udawalawe, afternoon safari and the Transit Home</span></li>
+          <li><b>Day 2</b><span>Dawn safari in Yala, rest through the heat of the day</span></li>
+          <li><b>Day 3</b><span>Second Yala drive, or birdwatching at Bundala</span></li>
+          <li><b>Day 4</b><span>Optional Mirissa whales, then the drive back</span></li>
+        </ol>
+        <p class="note">Park rules and closures change through the year, so we confirm the plan before you travel.</p>
+        <div class="pkg-actions"><a class="btn primary" href="#book" data-book="wild">Book this tour</a><a class="btn ghost" href="#contact">Contact now</a></div>
+      </div>
+    </article>
+
+    <!-- Custom / local experience -->
+    <article class="pkg reveal" id="custom" style="--c:#d33a2f">
+      <figure class="scene">
+        <img src="img/custom.png" alt="Visitors on the summit of Sigiriya looking over hills and lakes at sunset" width="640" height="480" loading="lazy" decoding="async">
+        <figcaption>Your route, your pace</figcaption>
+      </figure>
+      <div class="pkg-body">
+        <p class="kicker">Your own tour</p>
+        <h3>The Local Experience, Planned Your Way</h3>
+        <p class="pkg-lede">Tell us who is travelling, what you want to see and how fast you like to go. We build the whole tour around you, from the route and vehicle to your hotel, and add the local moments no brochure includes.</p>
+        <ul class="meta"><li><b>Suggested</b>Any length</li><li><b>Best months</b>All year</li><li><b>Good for</b>Individuals, families and groups</li></ul>
+        <h4>You decide</h4>
+        <ul class="checks">
+          <li>Dates, length and the pace of each day</li>
+          <li>Which places to see, from any tour on this page</li>
+          <li>The vehicle, chosen to fit your group size and route</li>
+          <li>Your hotel or guesthouse, or accommodation included in the package</li>
+        </ul>
+        <h4>Local experiences you can add</h4>
+        <ul class="chips">
+          <li>Dawn at Negombo fish market</li>
+          <li>Lagoon canoe ride</li>
+          <li>Cooking class with a local family</li>
+          <li>Tuk-tuk ride through a village</li>
+          <li>Tea estate and factory visit</li>
+          <li>Ayurvedic massage</li>
+        </ul>
+        <div class="pkg-actions"><a class="btn primary" href="#book" data-book="custom">Start planning</a><a class="btn ghost" href="#contact">Contact now</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 4 · WHY TRAVEL WITH US -->
+<section id="promise">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Why travel with us</p>
+      <h2>What every family can expect</h2>
+      <p>These are the commitments we make before every trip, in our own words. Guest reviews will appear here once travellers have shared theirs.</p>
+    </div>
+    <ul class="promises reveal">
+      <li><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg></span><h3>Patient with children</h3><p>Stops, snacks and breaks are planned around the youngest traveller, and nobody is rushed.</p></li>
+      <li><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg></span><h3>Your pace, your plan</h3><p>The route is tailored to your family or group, and it can change while you travel.</p></li>
+      <li><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span><h3>Every age and group size</h3><p>Solo travellers, couples, families and multi-generational groups are all planned for.</p></li>
+      <li><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg></span><h3>Comfortable vehicles</h3><p>A vehicle sized to your group and route, so everyone has room for the journey.</p></li>
+      <li><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span><h3>Local knowledge</h3><p>A Sri Lankan team that knows the roads, the seasons and which places are worth the detour.</p></li>
+      <li><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg></span><h3>Stay where you like</h3><p>Choose your own accommodation, or have it included in the package.</p></li>
+    </ul>
+    <div class="rvlist reveal" id="rvWrap" hidden>
+      <h3>What guests say</h3>
+      <div class="rvgrid" id="rvGrid"></div>
+    </div>
+    <div class="invite reveal">
+      <div>
+        <h3>Travelled with RoamLanka?</h3>
+        <p>We would like to hear how it went. Send us your feedback and, with your permission, it will appear here with your first name and country.</p>
+      </div>
+      <button class="btn ghost" id="shareBtn" type="button" aria-expanded="false" aria-controls="shareBox">Share your experience</button>
+    </div>
+    <div class="sharebox" id="shareBox" hidden>
+      <h3>Tell us about your trip</h3>
+      <p class="note">Write a few lines, then send them to us by WhatsApp or email. We read every review and add them to this page with your permission.</p>
+      <form id="rvForm" novalidate>
+        <div class="fields">
+          <label class="f" for="r-name">Your name<input id="r-name" type="text" autocomplete="name"></label>
+          <label class="f" for="r-country">Country<input id="r-country" type="text" autocomplete="country-name" placeholder="Where you are from"></label>
+          <label class="f full" for="r-tour">Which tour did you take?
+            <select id="r-tour">
+              <option value="">Choose one (optional)</option>
+              <option>Relaxation on the Waves</option>
+              <option>Scenic Routes, Waterfalls and Hikes</option>
+              <option>Cultural Wonders</option>
+              <option>One with the Wild</option>
+              <option>A tour we planned together</option>
+            </select>
+          </label>
+          <fieldset class="full">
+            <legend>Your rating</legend>
+            <div class="pills" id="r-rating">
+              <label class="pill"><input type="radio" name="rating" value="5"><span>5</span></label>
+              <label class="pill"><input type="radio" name="rating" value="4"><span>4</span></label>
+              <label class="pill"><input type="radio" name="rating" value="3"><span>3</span></label>
+              <label class="pill"><input type="radio" name="rating" value="2"><span>2</span></label>
+              <label class="pill"><input type="radio" name="rating" value="1"><span>1</span></label>
+            </div>
+            <p class="note">5 is the best.</p>
+          </fieldset>
+          <label class="f full" for="r-title">A short headline<input id="r-title" type="text" maxlength="80" placeholder="For example: Easy with two kids"></label>
+          <label class="f full" for="r-text">Your review<textarea id="r-text" maxlength="900" placeholder="What did you enjoy? Who looked after you?"></textarea></label>
+          <label class="checkrow full" for="r-ok"><input id="r-ok" type="checkbox"><span>You may show my first name and country with my review on your website.</span></label>
+        </div>
+        <p class="err" id="rvErr" role="alert"></p>
+        <div class="submit-row"><button class="btn primary" type="submit">Prepare my review</button></div>
+      </form>
+      <div class="result" id="rvResult" hidden>
+        <h4>Your review is ready. It is sent when you press a button below.</h4>
+        <textarea id="rvMsg" readonly aria-label="Your review message"></textarea>
+        <div class="acts">
+          <a class="btn primary" id="rvWa" href="#" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Send on WhatsApp</a>
+          <a class="btn ghost" id="rvMail" href="#"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>Send by email</a>
+          <button class="btn ghost copy-b" id="rvCopy" type="button">Copy text</button>
+        </div>
+        <p class="note">If a button does nothing on your device, copy the text and send it to roamlanka.sl@gmail.com. Thank you for taking the time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Contact now</p>
+      <h2>Tell us about your trip</h2>
+      <p>Ready to book, or have a question first? Fill in the form and send it by WhatsApp or email, or reach us directly using the details below.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="ci">
+          <div class="ci-row"><div class="lab"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>Email</div><div class="line"><a class="val" href="mailto:roamlanka.sl@gmail.com">roamlanka.sl@gmail.com</a><button class="copy" type="button" data-copy="roamlanka.sl@gmail.com">Copy</button></div></div>
+          <div class="ci-row"><div class="lab"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Phone</div><div class="line"><a class="val" href="tel:+94713426072">+94 71 342 6072</a><button class="copy" type="button" data-copy="+94713426072">Copy</button></div></div>
+          <div class="ci-row"><div class="lab"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Phone</div><div class="line"><a class="val" href="tel:+94771987494">+94 77 198 7494</a><button class="copy" type="button" data-copy="+94771987494">Copy</button></div></div>
+          <div class="ci-row"><div class="lab"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Based in</div><div class="line"><span class="val">Negombo, Sri Lanka</span></div></div>
+        </div>
+
+        <div class="faq">
+          <h3>Before you book</h3>
+          <details><summary>What does a tour cost?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>The price depends on the route, the number of guests, the vehicle and whether accommodation is included. Send a request with your dates and group size and we will reply with a quote.</p></details>
+          <details><summary>Can children join?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Yes. Every tour is family friendly, and we set the pace and the stops around the youngest traveller.</p></details>
+          <details><summary>Can I use my own hotel?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Yes. You can choose your own accommodation, or we can include it in the package.</p></details>
+          <details><summary>How do we travel between places?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>By private vehicle. The size of the vehicle depends on how many guests are travelling and where you are going.</p></details>
+          <details><summary>Can I change a package?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Yes. Every package is a starting point. It can be shortened, extended or mixed with another one.</p></details>
+          <details><summary>When is the best time to travel?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Sri Lanka has two monsoons, so some part of the island is always in season. The south and west coasts are best from about November to April, the hill country from January to April and wildlife safaris from February to July. Tell us your dates and we will suggest the best route.</p></details>
+        </div>
+      </div>
+
+      <div class="book reveal" id="book">
+        <h3>Book a tour</h3>
+        <p class="sub">Choose a tour and share your plans. Nothing is sent from this page until you press WhatsApp or Email on the next step.</p>
+        <form id="bookForm" novalidate>
+          <div class="fields">
+            <label class="f full" for="f-pkg">Tour
+              <select id="f-pkg" name="pkg" required>
+                <option value="">Choose a tour</option>
+                <option value="waves">Relaxation on the Waves (Hikkaduwa and south coast)</option>
+                <option value="hills">Scenic Routes, Waterfalls and Hikes (Ella and Kandy)</option>
+                <option value="culture">Cultural Wonders (Sigiriya and ancient cities)</option>
+                <option value="wild">One with the Wild (Yala safari)</option>
+                <option value="custom">The Local Experience / build my own tour</option>
+                <option value="unsure">Not sure yet, help me choose</option>
+              </select>
+            </label>
+            <label class="f full" for="f-name">Your name<input id="f-name" name="name" type="text" autocomplete="name" required></label>
+            <label class="f" for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email"></label>
+            <label class="f" for="f-phone">Phone or WhatsApp<input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+"></label>
+            <label class="f" for="f-adults">Adults<input id="f-adults" name="adults" type="number" min="1" max="60" value="2"></label>
+            <label class="f" for="f-kids">Children<input id="f-kids" name="kids" type="number" min="0" max="30" value="0"></label>
+            <label class="f" for="f-date">Arrival date<input id="f-date" name="date" type="date"></label>
+            <label class="f" for="f-days">Trip length in days<input id="f-days" name="days" type="number" min="1" max="60" placeholder="5"></label>
+            <label class="f full" for="f-stay">Accommodation
+              <select id="f-stay" name="stay">
+                <option value="I will choose my own">I will choose my own</option>
+                <option value="Include accommodation in the package">Include accommodation in the package</option>
+                <option value="Not sure yet, please suggest options">Not sure yet, please suggest options</option>
+              </select>
+            </label>
+            <fieldset class="full">
+              <legend>What would you like to include?</legend>
+              <div class="pills">
+                <label class="pill"><input type="checkbox" name="interest" value="Beaches and surf"><span>Beaches and surf</span></label>
+                <label class="pill"><input type="checkbox" name="interest" value="Waterfalls and hikes"><span>Waterfalls and hikes</span></label>
+                <label class="pill"><input type="checkbox" name="interest" value="Train rides"><span>Train rides</span></label>
+                <label class="pill"><input type="checkbox" name="interest" value="Temples and ruins"><span>Temples and ruins</span></label>
+                <label class="pill"><input type="checkbox" name="interest" value="Wildlife safari"><span>Wildlife safari</span></label>
+                <label class="pill"><input type="checkbox" name="interest" value="Tea country"><span>Tea country</span></label>
+                <label class="pill"><input type="checkbox" name="interest" value="Cooking and food"><span>Cooking and food</span></label>
+                <label class="pill"><input type="checkbox" name="interest" value="Wellness"><span>Wellness</span></label>
+                <label class="pill"><input type="checkbox" name="interest" value="Village life"><span>Village life</span></label>
+              </div>
+            </fieldset>
+            <label class="f full" for="f-notes">Anything else? <small>Children's ages, special occasions, food needs</small><textarea id="f-notes" name="notes"></textarea></label>
+          </div>
+          <p class="note">We use your details only to answer your request and plan your trip.</p>
+          <p class="err" id="formErr" role="alert"></p>
+          <div class="submit-row"><button class="btn primary" type="submit">Prepare my booking request</button></div>
+        </form>
+
+        <div class="result" id="result" hidden>
+          <h4>Your request is ready. It is sent when you press a button below.</h4>
+          <textarea id="msg" readonly aria-label="Your booking request"></textarea>
+          <div class="acts">
+            <a class="btn primary" id="waBtn" href="#" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Send on WhatsApp</a>
+            <a class="btn ghost" id="mailBtn" href="#"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>Send by email</a>
+            <button class="btn ghost copy-b" id="copyMsg" type="button" data-sel="#msg">Copy text</button>
+          </div>
+          <p class="note">If a button does nothing on your device, copy the text and send it to roamlanka.sl@gmail.com.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<a class="wa-float" id="waFloat" href="https://wa.me/94713426072?text=Hello%20RoamLanka%2C%20I%20have%20a%20question%20about%20a%20tour." target="_blank" rel="noopener" aria-label="Chat with RoamLanka on WhatsApp"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg><span>Chat on WhatsApp</span></a>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#home"><svg aria-hidden="true"><use href="#logo"/></svg>RoamLanka</a>
+    <nav aria-label="Footer"><a href="#offer">What we offer</a><a href="#tours">Tours</a><a href="#promise">Why us</a><a href="#contact">Contact</a></nav>
+    <span>Negombo, Sri Lanka &middot; &copy; 2026 RoamLanka</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  /* ---------- 3D island ---------- */
+  var K = 122, OX = 16;
+  function P(lon, lat){ return [(lon - 79.55) * K + OX, (9.95 - lat) * K]; }
+  var coastLL = [
+    [80.25,9.83],[80.45,9.60],[80.82,9.27],[81.00,8.95],[81.20,8.60],[81.33,8.28],[81.53,7.92],[81.70,7.72],
+    [81.82,7.42],[81.86,7.15],[81.83,6.85],[81.74,6.65],[81.62,6.52],[81.48,6.38],[81.31,6.20],[81.12,6.11],
+    [80.80,6.01],[80.59,5.92],[80.40,5.97],[80.22,6.03],[80.08,6.18],[80.00,6.42],[79.95,6.62],[79.85,6.93],
+    [79.83,7.21],[79.80,7.57],[79.82,8.02],[79.70,8.24],[79.88,8.45],[79.93,8.80],[79.72,9.10],[79.88,9.32],
+    [80.15,9.47],[79.90,9.62],[80.05,9.82]
+  ];
+  var hiLL = [[80.58,7.55],[80.88,7.42],[81.05,7.10],[81.08,6.80],[80.88,6.60],[80.62,6.68],[80.45,6.92],[80.42,7.28]];
+  var coast = coastLL.map(function(p){ return P(p[0], p[1]); });
+  var hi = hiLL.map(function(p){ return P(p[0], p[1]); });
+
+  function smooth(pts){
+    var n = pts.length, d = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+    for (var i = 0; i < n; i++){
+      var p0 = pts[(i - 1 + n) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n];
+      var c1x = p1[0] + (p2[0] - p0[0]) / 6, c1y = p1[1] + (p2[1] - p0[1]) / 6;
+      var c2x = p2[0] - (p3[0] - p1[0]) / 6, c2y = p2[1] - (p3[1] - p1[1]) / 6;
+      d += 'C' + c1x.toFixed(1) + ' ' + c1y.toFixed(1) + ' ' + c2x.toFixed(1) + ' ' + c2y.toFixed(1) + ' ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
+    }
+    return d + 'Z';
+  }
+  function scaleAround(pts, s){
+    var cx = 0, cy = 0; pts.forEach(function(p){ cx += p[0]; cy += p[1]; });
+    cx /= pts.length; cy /= pts.length;
+    return pts.map(function(p){ return [cx + (p[0] - cx) * s, cy + (p[1] - cy) * s]; });
+  }
+  function inside(pt, poly){
+    var x = pt[0], y = pt[1], c = false;
+    for (var i = 0, j = poly.length - 1; i < poly.length; j = i++){
+      var xi = poly[i][0], yi = poly[i][1], xj = poly[j][0], yj = poly[j][1];
+      if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) c = !c;
+    }
+    return c;
+  }
+  function segDist(p, a, b){
+    var dx = b[0] - a[0], dy = b[1] - a[1], l2 = dx * dx + dy * dy;
+    var t = l2 ? Math.max(0, Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / l2)) : 0;
+    return Math.hypot(p[0] - (a[0] + t * dx), p[1] - (a[1] + t * dy));
+  }
+  function edgeDist(p){
+    var m = 1e9;
+    for (var i = 0; i < coast.length; i++){ m = Math.min(m, segDist(p, coast[i], coast[(i + 1) % coast.length])); }
+    return m;
+  }
+  function rng(seed){ return function(){ seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+
+  var map = document.getElementById('map');
+  var NS = 'http://www.w3.org/2000/svg';
+  function layer(inner, z, css){
+    var s = document.createElementNS(NS, 'svg');
+    s.setAttribute('viewBox', '0 0 320 510');
+    s.setAttribute('class', 'layer');
+    s.setAttribute('aria-hidden', 'true');
+    s.style.transform = 'translate3d(' + (css && css.dx || 0) + 'px,' + (css && css.dy || 0) + 'px,' + z + 'px)';
+    s.innerHTML = inner;
+    map.insertBefore(s, map.firstChild);
+    return s;
+  }
+  var dCoast = smooth(coast);
+
+  /* sea lettering + soft shadow, deepest */
+  layer('<text class="sea-t" transform="translate(-30 380) rotate(-90)">INDIAN OCEAN</text><text class="sea-t" transform="translate(352 120) rotate(90)">BAY OF BENGAL</text>', -52);
+  var sh = layer('<path d="' + dCoast + '" fill="#000"/>', -44, {dx: 14, dy: 18});
+  sh.style.opacity = '.3'; sh.style.filter = 'blur(9px)';
+
+  /* side walls */
+  for (var i = 11; i >= 1; i--){
+    layer('<path d="' + dCoast + '" style="fill:color-mix(in srgb,var(--wall),var(--wall-dark) ' + (i * 8) + '%);stroke:color-mix(in srgb,var(--wall),var(--wall-dark) ' + (i * 8) + '%);stroke-width:1"/>', -i * 2.2);
+  }
+
+  /* land top with tree speckle */
+  var pinsXY = [[90,457],[199,376],[164,243],[233,442],[67,333]];
+  var rand = rng(7), dots = '';
+  for (var n = 0; n < 420 && dots.split('<circle').length < 150; n++){
+    var pt = [20 + rand() * 290, 20 + rand() * 480];
+    if (!inside(pt, coast) || edgeDist(pt) < 7) continue;
+    var near = pinsXY.some(function(q){ return Math.hypot(q[0] - pt[0], q[1] - pt[1]) < 16; });
+    if (near) continue;
+    dots += '<circle cx="' + pt[0].toFixed(1) + '" cy="' + pt[1].toFixed(1) + '" r="' + (1.4 + rand() * 1.6).toFixed(1) + '" style="fill:color-mix(in srgb,var(--land),#0b3a28 45%)" opacity=".55"/>';
+  }
+  layer('<defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:#fff;stop-opacity:.2"/><stop offset="1" style="stop-color:#000;stop-opacity:.1"/></linearGradient></defs>' +
+        '<path d="' + dCoast + '" style="fill:var(--land);stroke:var(--beach);stroke-width:3;stroke-linejoin:round"/>' + dots +
+        '<path d="' + dCoast + '" fill="url(#lg)"/>', 0);
+
+  /* central highlands as stacked terraces */
+  for (var k = 1; k <= 8; k++){
+    layer('<path d="' + smooth(scaleAround(hi, 1 - k * 0.095)) + '" style="fill:color-mix(in srgb,var(--land),var(--land-hi) ' + (k * 11) + '%)"/>', k * 2.4 + 0.2);
+  }
+
+  /* gentle tilt that follows the pointer */
+  var stage = document.getElementById('stage');
+  var cur = {rx: reduce ? 52 : 76, rz: reduce ? -16 : -38}, tgt = {rx: 52, rz: -16}, raf = 0;
+  function apply(){
+    map.style.setProperty('--rx', cur.rx.toFixed(2) + 'deg');
+    map.style.setProperty('--rz', cur.rz.toFixed(2) + 'deg');
+  }
+  function tick(){
+    cur.rx += (tgt.rx - cur.rx) * 0.07;
+    cur.rz += (tgt.rz - cur.rz) * 0.07;
+    apply();
+    if (Math.abs(tgt.rx - cur.rx) > 0.02 || Math.abs(tgt.rz - cur.rz) > 0.02){ raf = requestAnimationFrame(tick); }
+    else { raf = 0; }
+  }
+  function kick(){ if (!raf && !reduce){ raf = requestAnimationFrame(tick); } }
+  apply();
+  if (!reduce){ setTimeout(kick, 150); }
+  stage.addEventListener('pointermove', function(e){
+    if (reduce || e.pointerType !== 'mouse') return;
+    var r = stage.getBoundingClientRect();
+    var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+    tgt.rz = -16 + px * 16; tgt.rx = 52 - py * 9; kick();
+  });
+  stage.addEventListener('pointerleave', function(){ tgt.rz = -16; tgt.rx = 52; kick(); });
+
+  /* ---------- header menu and active link ---------- */
+  var mb = document.getElementById('menuBtn'), nav = document.getElementById('nav');
+  mb.addEventListener('click', function(){
+    var open = nav.hasAttribute('data-open');
+    if (open){ nav.removeAttribute('data-open'); } else { nav.setAttribute('data-open', ''); }
+    mb.setAttribute('aria-expanded', String(!open));
+  });
+  nav.addEventListener('click', function(e){
+    if (e.target.closest('a')){ nav.removeAttribute('data-open'); mb.setAttribute('aria-expanded', 'false'); }
+  });
+  var links = {};
+  [].slice.call(nav.querySelectorAll('a:not(.btn)')).forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
+  if ('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (e.isIntersecting){
+          Object.keys(links).forEach(function(k){ links[k].classList.remove('on'); });
+          if (links[e.target.id]) links[e.target.id].classList.add('on');
+        }
+      });
+    }, {rootMargin: '-45% 0px -50% 0px'});
+    ['home','offer','tours','promise','contact'].forEach(function(id){ var el = document.getElementById(id); if (el) spy.observe(el); });
+
+    var rev = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); rev.unobserve(e.target); } });
+    }, {threshold: 0.1});
+    [].slice.call(document.querySelectorAll('.reveal')).forEach(function(el){ rev.observe(el); });
+  } else {
+    [].slice.call(document.querySelectorAll('.reveal')).forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- booking ---------- */
+  var form = document.getElementById('bookForm'), sel = document.getElementById('f-pkg');
+  var errEl = document.getElementById('formErr'), result = document.getElementById('result');
+  var msgEl = document.getElementById('msg'), bookBox = document.getElementById('book');
+  var today = new Date();
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  document.getElementById('f-date').min = today.getFullYear() + '-' + pad(today.getMonth() + 1) + '-' + pad(today.getDate());
+
+  [].slice.call(document.querySelectorAll('[data-book]')).forEach(function(a){
+    a.addEventListener('click', function(){
+      var v = a.getAttribute('data-book');
+      if (v) sel.value = v;
+      bookBox.classList.add('flash');
+      setTimeout(function(){ bookBox.classList.remove('flash'); }, 1800);
+    });
+  });
+
+  function plural(n, w){ return n + ' ' + w + (n === 1 ? '' : 's'); }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = form.elements;
+    var name = f.name.value.trim(), email = f.email.value.trim(), phone = f.phone.value.trim();
+    errEl.textContent = '';
+    if (!sel.value){ errEl.textContent = 'Please choose a tour, or pick "Not sure yet".'; sel.focus(); return; }
+    if (!name){ errEl.textContent = 'Please tell us your name.'; f.name.focus(); return; }
+    if (!email && !phone){ errEl.textContent = 'Add an email address or a phone number so we can reply.'; f.email.focus(); return; }
+    if (email && !/^\S+@\S+\.\S+$/.test(email)){ errEl.textContent = 'That email address does not look right.'; f.email.focus(); return; }
+    var adults = parseInt(f.adults.value, 10) || 1, kids = parseInt(f.kids.value, 10) || 0;
+    var interests = [].slice.call(form.querySelectorAll('input[name="interest"]:checked')).map(function(c){ return c.value; });
+    var ref = 'RL-' + Date.now().toString(36).toUpperCase().slice(-6);
+    var lines = ['Hello RoamLanka, I would like to book a tour.', '', 'Ref: ' + ref, '',
+      'Tour: ' + sel.options[sel.selectedIndex].text,
+      'Name: ' + name];
+    if (email) lines.push('Email: ' + email);
+    if (phone) lines.push('Phone: ' + phone);
+    lines.push('Travellers: ' + plural(adults, 'adult') + (kids ? ', ' + plural(kids, 'child').replace('childs', 'children') : ''));
+    if (f.date.value) lines.push('Arrival date: ' + f.date.value);
+    if (f.days.value) lines.push('Trip length: ' + plural(parseInt(f.days.value, 10), 'day'));
+    lines.push('Accommodation: ' + f.stay.value);
+    if (interests.length) lines.push('Interests: ' + interests.join(', '));
+    if (f.notes.value.trim()) lines.push('Notes: ' + f.notes.value.trim());
+    var msg = lines.join('\n');
+    msgEl.value = msg;
+    document.getElementById('waBtn').href = 'https://wa.me/94713426072?text=' + encodeURIComponent(msg);
+    document.getElementById('mailBtn').href = 'mailto:roamlanka.sl@gmail.com?subject=' + encodeURIComponent('Tour request: ' + sel.options[sel.selectedIndex].text) + '&body=' + encodeURIComponent(msg);
+    result.hidden = false;
+    result.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'nearest'});
+  });
+
+  /* ---------- copy buttons ---------- */
+  function flashBtn(btn, text){
+    var old = btn.getAttribute('data-old') || btn.textContent;
+    btn.setAttribute('data-old', old);
+    btn.textContent = text;
+    setTimeout(function(){ btn.textContent = old; }, 1700);
+  }
+  function selectText(btn){
+    var target = btn.getAttribute('data-sel') ? document.querySelector(btn.getAttribute('data-sel')) : btn.parentNode.querySelector('.val');
+    if (!target) return;
+    if (target.select){ target.focus(); target.select(); return; }
+    var r = document.createRange(); r.selectNodeContents(target);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  function copyFrom(btn, text){
+    var fail = function(){ selectText(btn); flashBtn(btn, 'Press Ctrl+C'); };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){ flashBtn(btn, 'Copied'); }, fail);
+      } else { fail(); }
+    } catch (err){ fail(); }
+  }
+  [].slice.call(document.querySelectorAll('.copy[data-copy]')).forEach(function(b){
+    b.addEventListener('click', function(){ copyFrom(b, b.getAttribute('data-copy')); });
+  });
+  document.getElementById('copyMsg').addEventListener('click', function(){ copyFrom(this, msgEl.value); });
+})();
+</script>
+<script>
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  /* approved guest reviews come from reviews.json, which stays empty until real reviews are added */
+  function stars(n){ var s = ''; for (var i = 1; i <= 5; i++) s += i <= n ? '\u2605' : '\u2606'; return s; }
+  function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  fetch('reviews.json', {cache: 'no-cache'}).then(function(r){ return r.ok ? r.json() : []; }).then(function(list){
+    if (!Array.isArray(list)) return;
+    var grid = $('rvGrid'), n = 0;
+    list.slice(0, 24).forEach(function(r){
+      if (!r || typeof r.text !== 'string' || !r.text.trim()) return;
+      var rating = Math.max(1, Math.min(5, parseInt(r.rating, 10) || 5));
+      var f = el('figure', 'rvc');
+      var st = el('div', 'stars', stars(rating)); st.setAttribute('role', 'img'); st.setAttribute('aria-label', rating + ' out of 5');
+      f.appendChild(st);
+      if (r.title) f.appendChild(el('h4', '', String(r.title).slice(0, 90)));
+      f.appendChild(el('p', '', String(r.text).slice(0, 900)));
+      var who = [r.name, r.country].filter(Boolean).join(', ');
+      f.appendChild(el('figcaption', '', (who || 'Guest') + (r.tour ? ' \u00b7 ' + r.tour : '')));
+      grid.appendChild(f); n++;
+    });
+    if (n) $('rvWrap').hidden = false;
+  }).catch(function(){});
+
+  /* share-your-experience form */
+  var btn = $('shareBtn'), box = $('shareBox');
+  btn.addEventListener('click', function(){
+    var open = box.hidden;
+    box.hidden = !open;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Hide the review form' : 'Share your experience';
+    if (open){ box.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'nearest'}); $('r-name').focus({preventScroll: true}); }
+  });
+  function say(t){ $('rvErr').textContent = t; }
+  $('rvForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = $('r-name').value.trim(), country = $('r-country').value.trim(), text = $('r-text').value.trim();
+    var rating = (document.querySelector('#rvForm input[name="rating"]:checked') || {}).value;
+    say('');
+    if (!name){ say('Please tell us your name.'); $('r-name').focus(); return; }
+    if (!country){ say('Please tell us which country you are from.'); $('r-country').focus(); return; }
+    if (!rating){ say('Please choose a rating from 1 to 5.'); return; }
+    if (text.length < 20){ say('Please write at least a couple of sentences.'); $('r-text').focus(); return; }
+    var ref = 'RV-' + Date.now().toString(36).toUpperCase().slice(-6);
+    var lines = ['Hello RoamLanka, I would like to share a review of my trip.', '', 'Type: Guest review', 'Ref: ' + ref, 'Name: ' + name, 'Country: ' + country];
+    if ($('r-tour').value) lines.push('Tour: ' + $('r-tour').value);
+    lines.push('Rating: ' + rating + ' out of 5');
+    if ($('r-title').value.trim()) lines.push('Title: ' + $('r-title').value.trim());
+    lines.push('Review: ' + text.replace(/\r?\n+/g, ' '));
+    lines.push('Show my first name and country on the website: ' + ($('r-ok').checked ? 'Yes' : 'No'));
+    var msg = lines.join('\n');
+    $('rvMsg').value = msg;
+    $('rvWa').href = 'https://wa.me/94713426072?text=' + encodeURIComponent(msg);
+    $('rvMail').href = 'mailto:roamlanka.sl@gmail.com?subject=' + encodeURIComponent('Guest review from ' + name) + '&body=' + encodeURIComponent(msg);
+    $('rvResult').hidden = false;
+    $('rvResult').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'nearest'});
+  });
+  $('rvCopy').addEventListener('click', function(){
+    var b = this, old = b.textContent, ta = $('rvMsg');
+    var fall = function(){ ta.focus(); ta.select(); b.textContent = 'Press Ctrl+C'; setTimeout(function(){ b.textContent = old; }, 1700); };
+    try { navigator.clipboard.writeText(ta.value).then(function(){ b.textContent = 'Copied'; setTimeout(function(){ b.textContent = old; }, 1700); }, fall); } catch (x){ fall(); }
+  });
+})();
+</script>
+
+</body>
+</html>
